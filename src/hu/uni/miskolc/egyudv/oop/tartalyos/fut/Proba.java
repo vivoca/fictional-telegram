@@ -21,13 +21,20 @@ public class Proba {
     private static List<Tartaly> fillTartalyList() {
         List<Tartaly> tartalyList = new ArrayList<>();
         Scanner scanIn = new Scanner(System.in);
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Terfogat: ");
-            int terfogat = Integer.valueOf(scanIn.nextLine());
-            System.out.println("Nyomas: ");
-            int nyomas = Integer.valueOf(scanIn.nextLine());
-            Tartaly tartaly = new Tartaly(terfogat, nyomas);
-            tartalyList.add(tartaly);
+        int i = 0;
+        while (tartalyList.size() < 5) {
+            try {
+                System.out.println(i + 1 + ". tartaly adatai: ");
+                System.out.println("Terfogat: ");
+                int terfogat = Integer.valueOf(scanIn.nextLine());
+                System.out.println("Nyomas: ");
+                int nyomas = Integer.valueOf(scanIn.nextLine());
+                Tartaly tartaly = new Tartaly(terfogat, nyomas);
+                tartalyList.add(tartaly);
+                i++;
+            } catch (NumberFormatException ex) {
+                System.out.println("Rossz szam formatum");
+            }
         }
         scanIn.close();
         return tartalyList;
